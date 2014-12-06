@@ -9,7 +9,7 @@
 <script>
   $(document).ready(function() {
     // Connect to the node.js server. Change the IP address to the actual node server location.
-    var socket = io.connect('http://localhost');
+    var socket = io.connect('http://localhost:8080');
     // When I've received 'robot connected' message from the socket.io server...
     socket.on('robot connected', function (data) {
       console.log(data);
@@ -19,10 +19,10 @@
 
     // When the html buttons are clicked...
     $('#turn-left').click(function() {
-      socket.emit('robot command', { command: turn-left });
+      socket.emit('robot command', { command: "turn-left" });
     });
     $('#turn-right').click(function() {
-      socket.emit('robot command', { command: turn-right });
+      socket.emit('robot command', { command: "turn-right" });
     });
   });
 </script>
