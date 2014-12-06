@@ -1,0 +1,39 @@
+cd ~/nodeStuff/robotThugLife
+
+echo 'Installing npm...'
+sudo npm install
+
+echo 'Installing Grunt-cli...'
+sudo npm install -g grunt-cli
+
+echo 'Installing Watch...'
+sudo npm install grunt-contrib-watch --save-dev
+
+echo 'Installing Concat...'
+sudo npm install grunt-contrib-concat --save-dev
+
+echo 'Installing Uglify...'
+sudo npm install grunt-contrib-uglify --save-dev
+
+echo 'Installing JSHint...'
+sudo npm install grunt-contrib-jshint --save-dev
+
+echo 'Installing Imagemin...'
+sudo npm install grunt-contrib-imagemin --save-dev
+
+echo 'Installing Compass...'
+sudo npm install grunt-contrib-compass --save-dev
+
+echo 'Installing Autoprefixer...'
+sudo npm install grunt-autoprefixer --save-dev
+
+echo 'Done with Grunt '
+
+echo 'Installing Socket.io...'
+sudo npm install socket.io  --save-dev
+
+echo 'Installing Express.js..'
+sudo npm install express --save-dev
+
+echo 'Installing Jonny-Five...'
+sudo npm install johnny-five --save-dev
