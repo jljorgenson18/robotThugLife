@@ -48,3 +48,6 @@ node_modules/
 
 # Get rid of dem logs
 npm-debug.log
+
+# Don't want built css
+robot-ui/css/

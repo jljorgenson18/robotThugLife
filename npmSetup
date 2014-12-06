@@ -37,3 +37,6 @@ sudo npm install express --save-dev
 
 echo 'Installing Jonny-Five...'
 sudo npm install johnny-five --save-dev
+
+echo 'Updating...'
+sudo npm update
