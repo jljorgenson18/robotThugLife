@@ -2,6 +2,8 @@
 <button type="button" id="turn-left">Turn Left</button>
 <button type="button" id="turn-right">Turn Right</button>
 
+<h2 id="connected"></h2>
+<div>Dude, look in the console for the server to see the commands</div>
 <!--Using JQuery for button events-->
 <script src="js/libraries/jquery-2.1.1.min.js"></script>
 <!--Socket.io library-->
@@ -13,6 +15,7 @@
     // When I've received 'robot connected' message from the socket.io server...
     socket.on('robot connected', function (data) {
       console.log(data);
+      $('#connected').html(data.data);
       // Send out a message to the server
       socket.emit('robot command', { command: 'nothing' });
     });
