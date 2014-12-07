@@ -7,8 +7,8 @@
           $('#connected').html(data.data);
           // Send out a message to the server
           socket.emit('robot command', {
-            command: 'nothing'
-        });
+              command: 'nothing'
+          });
       });
 
       // When the html buttons are clicked...

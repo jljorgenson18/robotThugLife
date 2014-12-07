@@ -10,7 +10,7 @@ http_path = "/"
 
 # 2. probably don't need to touch these
 css_dir = "robot-ui/css"
-sass_dir = "robot-ui/scss"
+sass_dir = "robot-ui/sass"
 images_dir = "robot-ui/images"
 javascripts_dir = "robot-ui/js"
 environment = :development
