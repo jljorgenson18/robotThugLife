@@ -4,14 +4,16 @@ var app = express();
 var server = require('http').createServer(app);
 var path = require('path');
 
-// Access server through port 80
-server.listen(8080);
+// Access server through port  8080
+app.set('port', process.env.PORT || 8080);
+server.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+});
 
 var io = require('socket.io').listen(server);
 
 // Set '/public' as the static folder. Any files there will be directly sent to the viewer
 app.use(express.static(__dirname + '/robot-ui'));
-console.log("Now listening on port 8080...");
 // Set index.html as the base file
 app.get('/', function (req, res) {
     console.log("Sending html...");
