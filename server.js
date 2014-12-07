@@ -10,8 +10,6 @@ server.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-var io = require('socket.io').listen(server);
-
 // Set '/public' as the static folder. Any files there will be directly sent to the viewer
 app.use(express.static(__dirname + '/robot-ui'));
 // Set index.html as the base file
@@ -19,6 +17,8 @@ app.get('/', function (req, res) {
     console.log("Sending html...");
     res.sendFile(path.resolve(__dirname + '../robot-ui/index.html'));
 });
+
+var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function (socket) {
     // Send out a message (only to the one who connected)
