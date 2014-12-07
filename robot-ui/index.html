@@ -1,31 +1,15 @@
 <!--Add two buttons a user can click-->
-<button type="button" id="turn-left">Turn Left</button>
-<button type="button" id="turn-right">Turn Right</button>
+<html>
+<head></head>
+<body>
+    <button type="button" id="turn-left">Turn Left</button>
+    <button type="button" id="turn-right">Turn Right</button>
 
-<h2 id="connected"></h2>
-<div>Dude, look in the console for the server to see the commands</div>
-<!--Using JQuery for button events-->
-<script src="js/libraries/jquery-2.1.1.min.js"></script>
-<!--Socket.io library-->
-<script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
-<script>
-  $(document).ready(function() {
-    // Connect to the node.js server. Change the IP address to the actual node server location.
-    var socket = io.connect('http://localhost:8080');
-    // When I've received 'robot connected' message from the socket.io server...
-    socket.on('robot connected', function (data) {
-      console.log(data);
-      $('#connected').html(data.data);
-      // Send out a message to the server
-      socket.emit('robot command', { command: 'nothing' });
-    });
+    <h2 id="connected"></h2>
+    <div>Dude, look in the console for the server to see the commands</div>
+    <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+    <script src="js/all-min.js"></script>
+  
+</body>
 
-    // When the html buttons are clicked...
-    $('#turn-left').click(function() {
-      socket.emit('robot command', { command: "turn-left" });
-    });
-    $('#turn-right').click(function() {
-      socket.emit('robot command', { command: "turn-right" });
-    });
-  });
-</script>
+</html>

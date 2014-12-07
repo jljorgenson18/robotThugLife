@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 livereload: true,
             },
             scripts: {
-                files: ['library/js/myScripts/*.js', 'Gruntfile.js'],
+                files: ['robot-ui/js/**/*.js', 'Gruntfile.js', '!robot-ui/js/all-min.js'],
                 tasks: ['concat', 'uglify', 'jshint'],
                 options: {
                     spawn: false,
@@ -21,8 +21,8 @@ module.exports = function (grunt) {
                     spawn: false,
                 }
             },
-            php: {
-                files: '**/*.php',
+            html: {
+                files: 'robot-ui/index.html',
             }
         },
         concat: {
@@ -30,21 +30,21 @@ module.exports = function (grunt) {
                 separator: ';',
             },
             dist: {
-                src: ['library/js/myScripts/bonesDefault.js'],
-                dest: 'library/js/scripts.js',
+                src: ['robot-ui/js/libraries/jquery-2.1.1.min.js', 'robot-ui/js/socket.js'],
+                dest: 'robot-ui/js/all-min.js',
             },
         },
 
         uglify: {
             build: {
-                src: 'library/js/scripts.js',
-                dest: 'library/js/scripts.js',
+                src: 'robot-ui/js/all-min.js',
+                dest: 'robot-ui/js/all-min.js',
             }
         },
 
         jshint: {
             // define the files to lint
-            files: ['library/js/myScripts/bonesDefault.js'],
+            files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js'],
             // configure JSHint (documented at http://www.jshint.com/docs/)
             options: {
                 // more options here if you want to override JSHint defaults
@@ -56,9 +56,9 @@ module.exports = function (grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'library/images/',
+                    cwd: 'robot-ui/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'library/images/'
+                    dest: 'robot-ui/images/'
                 }]
             }
         },
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
         compass: {
             dist: {
                 options: {
-                    config: 'library/scss/config.rb'
+                    config: 'robot-ui/sass/config.rb'
                 }
             }
         },
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
                 cascade: false
             },
             your_target: {
-                src: 'library/css/style.css'
+                src: 'robot-ui/css/style.css'
             },
         }
     });
@@ -91,16 +91,10 @@ module.exports = function (grunt) {
 
     //Image Tasks
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    //grunt.loadNpmTasks('grunt-grunticon');
 
     //CSS Tasks
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    //grunt.loadNpmTasks('grunt-contrib-csslint');
-
-
-    //Browser Sync
-    //grunt.loadNpmTasks('grunt-browser-sync');
 
     grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'imagemin', 'compass', 'autoprefixer']);
 
