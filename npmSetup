@@ -1,4 +1,4 @@
-cd ~/nodeStuff/robotThugLife
+cd ~/development/server/robotThuglife
 
 echo 'Installing npm...'
 sudo npm install
