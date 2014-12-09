@@ -1,6 +1,6 @@
   $(document).ready(function () {
       // Connect to the node.js server. Change the IP address to the actual node server location.
-      var socket = io.connect('http://localhost:8080');
+      var socket = io.connect('http://68.82.233.43:8080');
       // When I've received 'robot connected' message from the socket.io server...
       socket.on('robot connected', function (data) {
           console.log(data);
