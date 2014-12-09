@@ -1,0 +1,55 @@
+Notes for robotThuglife project
+
+Current tasks:
+
+electronics:
+- Leds
+- Button
+
+johnny five code:
+- turn on particular led
+- Interpret button press -> relay information
+
+Client:
+- html for led 1, led 2 on/off; 
+- maybe make it look nice-ish? 
+
+Server:
+- send commands to arduino based on client requests
+- interpret feedback from arduino (button push disaplayed in terminal same as left/right, etc)
+
+As a whole:
+- build process so changes are implemented easily client side
+
+
+FUTURE TASKS:
+
+electronics:
+- Servos
+- Motors
+- ready, warning and broken lights (green, yellow, red)
+- lcd display? (warnings, battery level, other shit) (super future)
+- camera (super future)
+- enclosures/chassis/body for robot
+- solder and make polished(ish) product that does *something*
+
+johnny five code:
+- actuate servo
+- turn on motor (should be something like "move forward 6 inches")
+- reset server on button press or something. maybe button or switch turns server on/off
+
+client:
+- android app
+- make it look nice
+- forward, left, right, camera on/off and display image
+
+server:
+- handshake with client for secure connection. remember clients somehow
+
+as a whole:
+- get to the point where the source is not needed on the pi
+
+
+
+
+
