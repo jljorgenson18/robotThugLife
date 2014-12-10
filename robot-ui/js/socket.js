@@ -6,7 +6,7 @@
       $('.submitIP').click(function () {
           var host = $('.inputIP').val();
           connectToSocket(host);
-      })
+      });
 
       $('.inputIP').bind('keypress', function (e) {
           var code = e.keyCode || e.which;
