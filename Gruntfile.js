@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 
-    // Project configuration.
+    // Project configuration. Test
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
@@ -43,26 +43,11 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            // define the files to lint
             files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js'],
-            // configure JSHint (documented at http://www.jshint.com/docs/)
             options: {
-                // more options here if you want to override JSHint defaults
                 reporter: 'checkstyle'
             }
         },
-
-        imagemin: {
-            dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'robot-ui/images/',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: 'robot-ui/images/'
-                }]
-            }
-        },
-
         compass: {
             dist: {
                 options: {
@@ -89,13 +74,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    //Image Tasks
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-
     //CSS Tasks
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'imagemin', 'compass', 'autoprefixer']);
-
+    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('build', ['concat', 'uglify', 'jshint', 'compass', 'autoprefixer']);
 };
