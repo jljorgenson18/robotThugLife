@@ -77,9 +77,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    //Image Tasks
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-
     //CSS Tasks
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');

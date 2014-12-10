@@ -46,3 +46,5 @@ npm-debug.log
 
 # Don't want built css
 robot-ui/css/
+
+all-min.js
