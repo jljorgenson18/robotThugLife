@@ -4,11 +4,17 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <button type="button" id="turn-left">Turn Left</button>
-    <button type="button" id="turn-right">Turn Right</button>
-
+    <button class="testButton" type="button" id="turn-left">Turn Left</button>
+    <button class="testButton" type="button" id="turn-right">Turn Right</button>
+	<input class="inputIP" value ="Put your host and port here!" type="text"/>
+	<input type="submit" class="submitIP" value="Connect!">
+	<div>Some Hosts you may want to try
+	<ul>
+		<li>68.82.233.43:8080</li>
+		<li>localhost:8080</li>
+	</ul>
+	</div>
     <h2 id="connected"></h2>
-    <div>Dude, look in the console for the server to see the commands</div>
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
     <script src="js/all-min.js"></script>
   

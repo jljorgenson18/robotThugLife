@@ -1,8 +1,28 @@
 body {
-	background-color: #369;
-	font-family: arial;
+    background-color: #369;
+    font-family: arial;
+    * {
+        margin: 10px;
+    }
 }
 
 h2, div {
-	color: #ded;
+    color: #ded;
+    float: left;
+    clear: both;
+}
+
+.testButton {
+    float: left;
+    width: 100px;
+}
+
+.inputIP {
+    clear: left;
+    float: left;
+    width: 200px;
+}
+
+.submitIP {
+    float: left;
 }
