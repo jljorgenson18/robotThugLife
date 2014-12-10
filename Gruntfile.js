@@ -51,18 +51,6 @@ module.exports = function (grunt) {
                 reporter: 'checkstyle'
             }
         },
-
-        imagemin: {
-            dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'robot-ui/images/',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: 'robot-ui/images/'
-                }]
-            }
-        },
-
         compass: {
             dist: {
                 options: {
@@ -96,6 +84,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'imagemin', 'compass', 'autoprefixer']);
+    grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'compass', 'autoprefixer']);
 
 };
