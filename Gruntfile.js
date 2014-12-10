@@ -78,6 +78,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');
 
-    grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'compass', 'autoprefixer']);
+    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('build', ['concat', 'uglify', 'jshint', 'compass', 'autoprefixer']);
+
 
 };
