@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 
-    // Project configuration.
+    // Project configuration. Test
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
