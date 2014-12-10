@@ -43,11 +43,8 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            // define the files to lint
             files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js'],
-            // configure JSHint (documented at http://www.jshint.com/docs/)
             options: {
-                // more options here if you want to override JSHint defaults
                 reporter: 'checkstyle'
             }
         },
