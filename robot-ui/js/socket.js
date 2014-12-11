@@ -31,16 +31,38 @@
           });
 
           // When the html buttons are clicked...
-          $('#turn-left').click(function () {
+          $('.util').click(function () {
+              var id = $(this).attr('id')
               socket.emit('robot command', {
-                  command: "turn-left"
+                  command: id
               });
           });
-          $('#turn-right').click(function () {
-              socket.emit('robot command', {
-                  command: "turn-right"
-              });
+          $('.led1').click(function () {
+              $(this).toggleClass("ledOn");
+              if ($(this).hasClass("ledOn")) {
+                  socket.emit('robot command', {
+                      command: "led1-On"
+                  });
+              } else {
+                  socket.emit('robot command', {
+                      command: "led1-Off"
+                  });
+              }
           });
+
+          $('.led2').click(function () {
+              $(this).toggleClass("ledOn");
+              if ($(this).hasClass("ledOn")) {
+                  socket.emit('robot command', {
+                      command: "led2-On"
+                  });
+              } else {
+                  socket.emit('robot command', {
+                      command: "led2-Off"
+                  });
+              }
+          });
+
       }
 
   });
