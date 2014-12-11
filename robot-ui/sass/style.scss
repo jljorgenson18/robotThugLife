@@ -27,6 +27,17 @@ h2, div {
     float: left;
 }
 
+.debugWrapper {
+    float: left;
+    * {
+        float: left;
+    }
+    label: {
+        line-height: 32px;
+        margin: 0 10px;
+    }
+}
+
 .led {
     background: #ccc;
     cursor: pointer;
