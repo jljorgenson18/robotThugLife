@@ -35,11 +35,35 @@ function sendToBot(data) {
         board.repl.inject({
             led1: ledOne
         });
-    } else if (commanzd == 'led1-Off') {
-        led.off()
+    } else if (command == 'led1-Off') {
+        ledOne.off()
 
         board.repl.inject({
             led1: ledOne
+        });
+    } else if (command == 'led2-On') {
+        ledTwo.on()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'led2-Off') {
+        ledTwo.off()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'util1') {
+        ledTwo.strobe()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'util2') {
+        ledTwo.stop()
+
+        board.repl.inject({
+            led2: ledTwo
         });
     }
 }
