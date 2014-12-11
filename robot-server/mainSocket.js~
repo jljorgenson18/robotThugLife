@@ -6,7 +6,7 @@ module.exports.init = function (server, board) {
         socket.emit('robot connected', {
             data: 'Connected'
         });
-        var myBoard = board.init();
+        
         // When I've received 'robot command' message from this connection...
         socket.on('robot command', function (data) {
             console.log(data);
@@ -16,7 +16,8 @@ module.exports.init = function (server, board) {
             if (data.command === "debugConnected") {
                 connectToJ5 = false;
             }
-            if (connectToJ5) {
+            if (connectToJ5) {console.log("1");
+		var myBoard = board.init();
                 if (myBoard.ready) {
                     board.sendToBot(myBoard, data);
                 } else {

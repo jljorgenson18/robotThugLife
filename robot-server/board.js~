@@ -7,7 +7,7 @@ module.exports.init = function () {
 
     // Initialize connection to Arduino (will crash if none is attached)
     myBoard = new j5.Board();
-    //myBoard.ready = false;
+    myBoard.ready = false;
     // When the connection is ready...
     myBoard.on("ready", function () {
         // create LEDs
