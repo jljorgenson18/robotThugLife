@@ -11,7 +11,8 @@ module.exports.init = function (server, board) {
         socket.on('robot command', function (data) {
             console.log(data);
             if (data.command === 'connected') {
-                board.sendToBot(data);
+                var myBoard = board.init();
+                board.sendToBot(myBoard, data);
             }
         });
     });

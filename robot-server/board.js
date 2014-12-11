@@ -1,7 +1,4 @@
-module.exports.board = getBoard();
-module.exports.sendToBot = sendToBot;
-
-function getBoard() {
+module.exports.init = function () {
     var j5 = require("johnny-five"),
         board, ledOne, ledTwo;
 
@@ -27,7 +24,7 @@ function getBoard() {
     return board;
 }
 
-function sendToBot(data) {
+module.exports.sendToBot = function (board, data) {
     var command = data.command;
     if (command == 'led1-On') {
         ledOne.on();
