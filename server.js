@@ -5,7 +5,7 @@ var server = require('http').createServer(app);
 var path = require('path');
 //// JOHNNY FIVE SHIT
 
-var five = require("johnny-five"),
+var j5 = require("johnny-five"),
     board, ledOne, ledTwo;
 
 // collect command information from server. left toggles led 1 right toggles led 2
@@ -13,7 +13,7 @@ var five = require("johnny-five"),
 var left = false;
 var right = false;
 // Initialize connection to Arduino (will crash if none is attached)
-board = new five.Board();
+board = new j5.Board();
 
 // When the connection is ready...
 board.on("ready", function () {
@@ -69,10 +69,34 @@ function sendToBot(data) {
             led1: ledOne
         });
     } else if (command == 'led1-Off') {
-        led.off()
+        ledOne.off()
 
         board.repl.inject({
             led1: ledOne
+        });
+    } else if (command == 'led2-On') {
+        ledTwo.on()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'led2-Off') {
+        ledTwo.off()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'util1') {
+        ledTwo.strobe()
+
+        board.repl.inject({
+            led2: ledTwo
+        });
+    } else if (command == 'util2') {
+        ledTwo.stop()
+
+        board.repl.inject({
+            led2: ledTwo
         });
     }
 }
