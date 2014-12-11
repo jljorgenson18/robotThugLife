@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['robot-ui/js/**/*.js', 'Gruntfile.js', '!robot-ui/js/all-min.js'],
-                tasks: ['concat', 'uglify', 'jshint'],
+                tasks: ['jshint', 'concat', 'uglify'],
                 options: {
                     spawn: false,
                 },
