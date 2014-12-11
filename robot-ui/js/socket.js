@@ -32,7 +32,7 @@
 
           // When the html buttons are clicked...
           $('.util').click(function () {
-              var id = $(this).attr('id')
+              var id = $(this).attr('id');
               socket.emit('robot command', {
                   command: id
               });
@@ -62,7 +62,6 @@
                   });
               }
           });
-
       }
 
   });
