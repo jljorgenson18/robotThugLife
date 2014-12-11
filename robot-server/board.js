@@ -1,29 +1,29 @@
 module.exports.init = function () {
     console.log("Initializing board");
-    var j5 = require("johnny-five"),
-        board, self;
+    var j5 = require("johnny-five");
+    var myBoard;
 
     // collect command information from server. left toggles led 1 right toggles led 2
 
     // Initialize connection to Arduino (will crash if none is attached)
-    board = new j5.Board();
+    myBoard = new j5.Board();
+    myBoard.ready = false;
     // When the connection is ready...
-    self = board;
-    board.on("ready", function () {
+    myBoard.on("ready", function () {
         // create LEDs
-        self.ledOne = new j5.Led(13)
-        self.ledTwo = new j5.Led(11)
+        myBoard.ledOne = new j5.Led(13)
+        myBoard.ledTwo = new j5.Led(11)
 
         // Inject LEDs
-        board.repl.inject({
+        myBoard.repl.inject({
             led1: self.ledOne
         });
-        board.repl.inject({
+        myBoard.repl.inject({
             led2: self.ledTwo
         });
-        console.log(board);
+        myBoard.ready = true;
     });
-    return board;
+    return myBoard;
 }
 
 module.exports.sendToBot = function (board, data) {
