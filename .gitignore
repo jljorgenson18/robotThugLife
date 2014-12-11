@@ -48,3 +48,7 @@ npm-debug.log
 robot-ui/css/
 
 all-min.js
+
+#temps
+*.js~
+*.txt~

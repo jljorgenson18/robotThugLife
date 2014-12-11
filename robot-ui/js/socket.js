@@ -21,11 +21,12 @@ $(document).ready(function () {
         console.log("host = " + host);
         var socket = io.connect('http://' + host);
         // When I've received 'robot connected' message from the socket.io server...
-        var connectCommand = "connected";
+        var connectCommand;
         if ($("#debugCheckBox").is(':checked')) {
             console.log("CHECKED!");
             connectCommand = "debugConnected";
         }
+	else {connectCommand = "connected";}
         socket.on('robot connected', function (data) {
             console.log(data);
             $('#connected').html(data.data);
@@ -64,6 +65,19 @@ $(document).ready(function () {
             } else {
                 socket.emit('robot command', {
                     command: "led2-Off"
+                });
+            }
+        });
+
+	$('.led3').click(function () {
+            $(this).toggleClass("ledOn");
+            if ($(this).hasClass("ledOn")) {
+                socket.emit('robot command', {
+                    command: "led3-On"
+                });
+            } else {
+                socket.emit('robot command', {
+                    command: "led3-Off"
                 });
             }
         });

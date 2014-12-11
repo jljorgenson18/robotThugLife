@@ -1,4 +1,4 @@
-module.exports.init = function () {
+module.exports.init = function (dumby) {
     console.log("Initializing board");
     var j5 = require("johnny-five");
     var myBoard;
@@ -9,10 +9,13 @@ module.exports.init = function () {
     myBoard = new j5.Board();
     //myBoard.ready = false;
     // When the connection is ready...
+if(dumby===0){ //Didnt feel like tabbing this
     myBoard.on("ready", function () {
         // create LEDs
         myBoard.ledOne = new j5.Led(13)
         myBoard.ledTwo = new j5.Led(11)
+	myBoard.ledThree = new j5.Led(12)
+	myBoard.ledFour = new j5.Led(10)
 
         // Inject LEDs
         myBoard.repl.inject({
@@ -21,14 +24,22 @@ module.exports.init = function () {
         myBoard.repl.inject({
             led2: myBoard.ledTwo
         });
+	myBoard.repl.inject({
+            led3: myBoard.ledThree
+        });
+	myBoard.repl.inject({
+            led4: myBoard.ledFour
+        });
         myBoard.ready = true;
     });
     return myBoard;
-}
+}}
 
 module.exports.sendToBot = function (board, data) {
     var ledOne = board.ledOne;
     var ledTwo = board.ledTwo;
+    var ledThree = board.ledThree;
+    var ledFour = board.ledFour;
     var command = data.command;
     if (command == 'led1-On') {
         ledOne.on();
@@ -53,6 +64,18 @@ module.exports.sendToBot = function (board, data) {
 
         board.repl.inject({
             led2: ledTwo
+        });
+    } else if (command == 'led3-On') {
+        ledThree.on()
+
+        board.repl.inject({
+            led3: ledThree
+        });
+    } else if (command == 'led3-Off') {
+        ledThree.off()
+
+        board.repl.inject({
+            led3: ledThree
         });
     } else if (command == 'util1') {
         ledTwo.strobe()

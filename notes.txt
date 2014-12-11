@@ -1,5 +1,13 @@
 Notes for robotThuglife project
 
+12-11 SHIT
+- make checkboxes or dropdown for selecting robots.
+- have socket that creates the correct board and sends that to init(server, board)
+- has to choose correct button layout (leds, motor etc..) this is html and in board.js (send to bot AND the constructor)
+- profit
+
+
+
 Current tasks:
 
 electronics:
@@ -13,10 +21,12 @@ johnny five code:
 Client:
 - html for led 1, led 2 on/off; 
 - maybe make it look nice-ish? 
+- Jesse: html set so that you choose a bot when you connnect, then it opens a UI specific to that bot
 
 Server:
 - send commands to arduino based on client requests
 - interpret feedback from arduino (button push disaplayed in terminal same as left/right, etc)
+- connect to specific bot based on client input
 
 As a whole:
 - build process so changes are implemented easily client side
@@ -48,6 +58,9 @@ server:
 
 as a whole:
 - get to the point where the source is not needed on the pi
+
+
+
 
 
 

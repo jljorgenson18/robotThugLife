@@ -22,9 +22,6 @@
 	<div class='debugWrapper'>
 	<input id="debugCheckBox" type="checkbox" name="debug" value="debug"><label>Server Only</label>
 	<div>
-	<div class='selectRobotOne'>
-	<input id="robot1" type="checkbox" name="robot1" value="robot1"><label>Robot One</label>
-	<div>
     <h2 id="connected"></h2>
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
     <script src="js/all-min.js"></script>

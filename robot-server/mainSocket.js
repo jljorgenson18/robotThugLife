@@ -6,7 +6,7 @@ module.exports.init = function (server, board) {
         socket.emit('robot connected', {
             data: 'Connected'
         });
-        var myBoard = board.init();
+        var myBoard = board.init(0);
         // When I've received 'robot command' message from this connection...
         socket.on('robot command', function (data) {
             console.log(data);
