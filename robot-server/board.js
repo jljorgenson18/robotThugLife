@@ -2,13 +2,13 @@ module.exports.board = getBoard();
 module.exports.sendToBot = sendToBot;
 
 function getBoard() {
-    var five = require("johnny-five"),
+    var j5 = require("johnny-five"),
         board, ledOne, ledTwo;
 
     // collect command information from server. left toggles led 1 right toggles led 2
 
     // Initialize connection to Arduino (will crash if none is attached)
-    board = new five.Board();
+    board = new j5.Board();
 
     // When the connection is ready...
     board.on("ready", function () {
