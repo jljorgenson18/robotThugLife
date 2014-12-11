@@ -1,5 +1,5 @@
 module.exports.init = function () {
-    console.log("On Init");
+    console.log("Initializing board");
     var j5 = require("johnny-five"),
         board, self;
 
@@ -9,12 +9,8 @@ module.exports.init = function () {
     board = new j5.Board();
     // When the connection is ready...
     self = board;
-    console.log("SELF!");
-    console.log(self);
     board.on("ready", function () {
         // create LEDs
-        console.log("This =");
-        console.log(this);
         self.ledOne = new j5.Led(13)
         self.ledTwo = new j5.Led(11)
 
@@ -32,7 +28,7 @@ module.exports.init = function () {
 
 module.exports.sendToBot = function (board, data) {
     var ledOne = board.ledOne;
-    var ledTwo = board.ledOne;
+    var ledTwo = board.ledTwo;
     var command = data.command;
     if (command == 'led1-On') {
         ledOne.on();
