@@ -1,0 +1,26 @@
+{
+    "metaData": "stuff goes here",
+    "controls": [{
+        "type": "toggle",
+        "on": "led1-On",
+        "off": "led1-On"
+    }, {
+        "type": "toggle",
+        "on": "led2-On",
+        "off": "led2-Off"
+    }, {
+        "type": "toggle",
+        "on": "led3-On",
+        "off": "led3-Off"
+    }, {
+        "type": "toggle",
+        "on": "led4-On",
+        "off": "led4-Off"
+    }, {
+        "type": "btn",
+        "click": "util1"
+    }, {
+        "type": "btn",
+        "click": "util2"
+    }]
+}

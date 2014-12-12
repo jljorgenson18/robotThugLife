@@ -1,8 +1,7 @@
 module.exports = function (botName) {
-    console.log("Initializing board");
+    console.log("Initializing " + botName + "...");
     var j5 = require("johnny-five");
     var myBoard, bot;
-    console.log(botName);
     // Initialize connection to Arduino (will crash if none is attached)
     bot = require('./' + botName + '/bot.js');
     myBoard = new j5.Board();
