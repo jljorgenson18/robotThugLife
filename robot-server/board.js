@@ -3,19 +3,17 @@ module.exports.init = function (dumby) {
     var j5 = require("johnny-five");
     var myBoard;
 
-    // collect command information from server. left toggles led 1 right toggles led 2
-
     // Initialize connection to Arduino (will crash if none is attached)
     myBoard = new j5.Board();
-    //myBoard.ready = false;
-    // When the connection is ready...
-if(dumby===0){ //Didnt feel like tabbing this
+
+    //This should be working...
+    //myBoard.ready = false; 
     myBoard.on("ready", function () {
         // create LEDs
         myBoard.ledOne = new j5.Led(13)
         myBoard.ledTwo = new j5.Led(11)
-	myBoard.ledThree = new j5.Led(12)
-	myBoard.ledFour = new j5.Led(10)
+        myBoard.ledThree = new j5.Led(12)
+        myBoard.ledFour = new j5.Led(10)
 
         // Inject LEDs
         myBoard.repl.inject({
@@ -24,16 +22,16 @@ if(dumby===0){ //Didnt feel like tabbing this
         myBoard.repl.inject({
             led2: myBoard.ledTwo
         });
-	myBoard.repl.inject({
+        myBoard.repl.inject({
             led3: myBoard.ledThree
         });
-	myBoard.repl.inject({
+        myBoard.repl.inject({
             led4: myBoard.ledFour
         });
         myBoard.ready = true;
     });
     return myBoard;
-}}
+}
 
 module.exports.sendToBot = function (board, data) {
     var ledOne = board.ledOne;
