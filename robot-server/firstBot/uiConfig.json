@@ -3,24 +3,30 @@
     "controls": [{
         "type": "toggle",
         "on": "led1-On",
-        "off": "led1-On"
+        "off": "led1-On",
+        "label": "led1"
     }, {
         "type": "toggle",
         "on": "led2-On",
-        "off": "led2-Off"
+        "off": "led2-Off",
+        "label": "led2"
     }, {
         "type": "toggle",
         "on": "led3-On",
-        "off": "led3-Off"
+        "off": "led3-Off",
+        "label": "led3"
     }, {
         "type": "toggle",
         "on": "led4-On",
-        "off": "led4-Off"
+        "off": "led4-Off",
+        "label": "led4"
     }, {
         "type": "btn",
-        "click": "util1"
+        "click": "util1",
+        "label": "util1"
     }, {
         "type": "btn",
-        "click": "util2"
+        "click": "util2",
+        "label": "util2"
     }]
 }
