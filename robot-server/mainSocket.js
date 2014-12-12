@@ -17,9 +17,8 @@ module.exports.init = function (server, board) {
                 connectToJ5 = false;
             }
             if (connectToJ5) {
-                console.log(myBoard.ready);
                 if (myBoard.ready) {
-                    myBoard.sendToBot(myBoard, data);
+                    myBoard.sendToBot(data);
                 } else {
                     console.log("Board not Ready");
                 }
