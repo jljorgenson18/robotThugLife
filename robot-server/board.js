@@ -10,6 +10,7 @@ module.exports = function (botName) {
     myBoard.ready = false;
     myBoard.on("ready", function () {
         myBoard.ready = true;
+        
         // create LEDs
         myBoard.ready = bot.ready;
         myBoard.sendToBot = bot.sendToBot;
