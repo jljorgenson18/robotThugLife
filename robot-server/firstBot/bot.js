@@ -1,4 +1,4 @@
-module.exports.ready = function () {
+module.exports.onReady = function () {
     var myBoard = this;
     var j5 = require("johnny-five");
     myBoard.ledOne = new j5.Led(13)
