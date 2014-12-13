@@ -12,7 +12,7 @@ module.exports = function (botName) {
         myBoard.ready = true;
         
         // create LEDs
-        myBoard.ready = bot.ready;
+        myBoard.onReady = bot.onReady;
         myBoard.sendToBot = bot.sendToBot;
         myBoard.ready();
     });
