@@ -25,8 +25,9 @@ $(document).ready(function () {
         if ($("#debugCheckBox").is(':checked')) {
             console.log("CHECKED!");
             connectCommand = "debugConnected";
+        } else {
+            connectCommand = "connected";
         }
-	else {connectCommand = "connected";}
         socket.on('robot connected', function (data) {
             console.log(data);
             $('#connected').html(data.data);
@@ -69,7 +70,7 @@ $(document).ready(function () {
             }
         });
 
-	$('.led3').click(function () {
+        $('.led3').click(function () {
             $(this).toggleClass("ledOn");
             if ($(this).hasClass("ledOn")) {
                 socket.emit('robot command', {
