@@ -7,9 +7,10 @@ module.exports = function (botName) {
     myBoard = new j5.Board();
 
     //This should be working...
-    myBoard.ready = false;
+    //myBoard.ready = false;
     myBoard.on("ready", function () {
         myBoard.ready = true;
+        console.log("ready freddy");
         
         // create LEDs
         myBoard.onReady = bot.onReady;

@@ -7,7 +7,7 @@ module.exports.onReady = function () {
     myBoard.ledFour = new j5.Led(10)
 
     // Inject LEDs
-    myBoard.repl.inject({
+    /*myBoard.repl.inject({
         led1: myBoard.ledOne
     });
     myBoard.repl.inject({
@@ -18,7 +18,7 @@ module.exports.onReady = function () {
     });
     myBoard.repl.inject({
         led4: myBoard.ledFour
-    });
+    });*/
 }
 
 module.exports.sendToBot = function (data) {
@@ -31,50 +31,50 @@ module.exports.sendToBot = function (data) {
     if (command == 'led1-On') {
         ledOne.on();
 
-        myBoard.repl.inject({
-            led1: ledOne
-        });
+        // myBoard.repl.inject({
+        //     led1: ledOne
+        // });
     } else if (command == 'led1-Off') {
-        ledOne.off()
+        ledOne.off();
 
-        myBoard.repl.inject({
-            led1: ledOne
-        });
+        // myBoard.repl.inject({
+        //     led1: ledOne
+        // });
     } else if (command == 'led2-On') {
-        ledTwo.on()
+        ledTwo.on();
 
-        myBoard.repl.inject({
-            led2: ledTwo
-        });
+        // myBoard.repl.inject({
+        //     led2: ledTwo
+        // });
     } else if (command == 'led2-Off') {
-        ledTwo.off()
+        ledTwo.off();
 
-        myBoard.repl.inject({
-            led2: ledTwo
-        });
+        // myBoard.repl.inject({
+        //     led2: ledTwo
+        // });
     } else if (command == 'led3-On') {
-        ledThree.on()
+        ledThree.on();
 
-        myBoard.repl.inject({
-            led3: ledThree
-        });
+        // myBoard.repl.inject({
+        //     led3: ledThree
+        // });
     } else if (command == 'led3-Off') {
-        ledThree.off()
+        ledThree.off();
 
-        myBoard.repl.inject({
-            led3: ledThree
-        });
+        // myBoard.repl.inject({
+        //     led3: ledThree
+        // });
     } else if (command == 'util1') {
-        ledTwo.strobe()
+        ledTwo.strobe();
 
-        myBoard.repl.inject({
-            led2: ledTwo
-        });
+        // myBoard.repl.inject({
+        //     led2: ledTwo
+        // });
     } else if (command == 'util2') {
-        ledTwo.stop()
+        ledTwo.stop();
 
-        myBoard.repl.inject({
-            led2: ledTwo
-        });
+        // myBoard.repl.inject({
+        //     led2: ledTwo
+        // });
     }
 }
