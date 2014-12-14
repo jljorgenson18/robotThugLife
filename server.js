@@ -5,6 +5,7 @@ var server = require('http').createServer(app);
 var path = require('path');
 var mainSocket = require('./robot-server/mainSocket.js')
 var board = require("./robot-server/board.js");
+var botName = require("./config.json").botName;
 // Access server through port  8080
 app.set('port', process.env.PORT || 8080);
 server.listen(app.get('port'), function () {
@@ -19,4 +20,4 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname + '../robot-ui/index.html'));
 });
 
-mainSocket.init(server, board);
+mainSocket.init(server, board, botName);

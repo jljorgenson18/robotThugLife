@@ -1,10 +1,10 @@
-module.exports.init = function (server, board) {
+module.exports.init = function (server, board, botName) {
     var io = require('socket.io').listen(server);
     var connectToJ5 = true;
     io.sockets.on('connection', function (socket) {
         // Send out a message (only to the one who connected)
-        var myBoard = board("firstBot");
-        var uiConfig = require('./firstBot/uiConfig.json');
+        var myBoard = board(botName);
+        var uiConfig = require('./' + botName + '/uiConfig.json');
         // var uiConfig = JSON.parse(uiConfigJSON.readFileSync('file', 'utf8'));
         socket.emit('robot connected', {
             data: 'Connected',
