@@ -1,8 +1,7 @@
 {
     //Simply put 
-    //isBot: false 
+    //bot: false 
     //If hosting on different 
     //server... such as localhost
-    "isBot": true,
-    "whichBot": "firstBot"
+    "bot": "firstBot"
 }
