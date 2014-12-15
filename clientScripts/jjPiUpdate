@@ -1,0 +1,1 @@
+ssh pi1 "cd robotThugLife ; git pull origin master ; sudo npm update ; grunt build"
