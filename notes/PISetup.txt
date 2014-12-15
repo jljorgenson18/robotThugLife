@@ -1,0 +1,37 @@
+1. Flash Raspbian image to SD Card
+2. Start PI with SD card and SSH into it
+   - Default SSH password is "raspberry"
+3. Set up Static IP and wireless. 
+   Interface file (/etc/network/interfaces) 
+   should look similar to this...
+
+auto lo
+iface lo inet loopback
+iface eth0 inet dhcp
+allow-hotplug wlan0
+auto wlan0
+iface wlan0 inet static
+address 192.168.0.6
+netmask 255.255.255.0
+gateway 192.168.0.1
+wpa-ssid "YOUR_SSID"
+wpa-psk "YOUR_PASSPHRASE"
+
+Check out this guide (http://docs.brewpi.com/installing-your-pi/rpi-setup.html) for more wireless set up stuff. 
+*SSID Is your wireless name
+
+4. Download node with the following commands
+
+wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+sudo dpkg -i node_latest_armhf.deb
+
+Follow this guide (http://weworkweplay.com/play/raspberry-pi-nodejs/)
+if you run into problems
+
+5. Install ruby gems and Compass (may run into issues and may 
+   need to install ruby-dev, this might take awhile)
+
+6. Clone repo (git clone https://github.com/jljorgenson18/robotThugLife.git)
+
+7. Run npm install, npm update, and then grunt build
+   (Could be awhile)
