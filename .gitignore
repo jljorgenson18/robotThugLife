@@ -44,12 +44,17 @@ node_modules/
 # Get rid of dem logs
 npm-debug.log
 
-# Don't want built css
+# Don't want built css or built js
 robot-ui/css/
-
 all-min.js
+
+# Environment specific configuration
 config.json
-#temps
+
+# QA Stuff
+jsHint.xml
+
+# temps
 *.js~
 *.txt~
 *.html~ 

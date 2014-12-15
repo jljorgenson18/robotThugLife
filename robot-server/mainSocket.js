@@ -1,32 +1,28 @@
-module.exports.init = function (server, board, botName) {
+module.exports.init = function (server, botConstructor, botName) {
     var io = require('socket.io').listen(server);
     var connectToJ5 = true;
     io.sockets.on('connection', function (socket) {
-        // Send out a message (only to the one who connected)
-        var myBoard = board(botName);
-        var uiConfig = require('./' + botName + '/uiConfig.json');
-        // var uiConfig = JSON.parse(uiConfigJSON.readFileSync('file', 'utf8'));
+        var myBot, uiConfig;
+        if (botName !== "none") {
+            myBot = botConstructor();
+            uiConfig = require('./' + botName + '/uiConfig.json');
+        } else {
+            uiConfig = "";
+            connectToJ5 = false;
+        }
         socket.emit('robot connected', {
             data: 'Connected',
-            bot: uiConfig
+            myBot: uiConfig
         });
-
-        // When I've received 'robot command' message from this connection...
         socket.on('robot command', function (data) {
             console.log(data);
-            if (data.command === 'connected') {
-                connectToJ5 = true;
-            }
-            if (data.command === "debugConnected") {
-                connectToJ5 = false;
-            }
             if (connectToJ5) {
-                if (myBoard.ready) {
-                    myBoard.sendToBot(data);
+                if (myBot.ready) {
+                    myBot.board.emit(data.command);
                 } else {
                     console.log("Board not Ready");
                 }
             }
         });
     });
-}
+};

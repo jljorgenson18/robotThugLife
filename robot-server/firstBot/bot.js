@@ -1,80 +1,46 @@
-module.exports.onReady = function () {
-    var myBoard = this;
+module.exports = function () {
+    console.log('Constructing Bot...');
+    var bot = {};
     var j5 = require("johnny-five");
-    myBoard.ledOne = new j5.Led(13)
-    myBoard.ledTwo = new j5.Led(11)
-    myBoard.ledThree = new j5.Led(12)
-    myBoard.ledFour = new j5.Led(10)
 
-    // Inject LEDs
-    /*myBoard.repl.inject({
-        led1: myBoard.ledOne
+    bot.board = new j5.Board();
+    bot.ready = false;
+    bot.board.on("ready", function () {
+        console.log("ready freddy");
+        initComponents();
+        initListeners();
+        bot.ready = true;
     });
-    myBoard.repl.inject({
-        led2: myBoard.ledTwo
-    });
-    myBoard.repl.inject({
-        led3: myBoard.ledThree
-    });
-    myBoard.repl.inject({
-        led4: myBoard.ledFour
-    });*/
-}
+    return bot;
 
-module.exports.sendToBot = function (data) {
-    var myBoard = this;
-    var ledOne = myBoard.ledOne;
-    var ledTwo = myBoard.ledTwo;
-    var ledThree = myBoard.ledThree;
-    var ledFour = myBoard.ledFour;
-    var command = data.command;
-    if (command == 'led1-On') {
-        ledOne.on();
-
-        // myBoard.repl.inject({
-        //     led1: ledOne
-        // });
-    } else if (command == 'led1-Off') {
-        ledOne.off();
-
-        // myBoard.repl.inject({
-        //     led1: ledOne
-        // });
-    } else if (command == 'led2-On') {
-        ledTwo.on();
-
-        // myBoard.repl.inject({
-        //     led2: ledTwo
-        // });
-    } else if (command == 'led2-Off') {
-        ledTwo.off();
-
-        // myBoard.repl.inject({
-        //     led2: ledTwo
-        // });
-    } else if (command == 'led3-On') {
-        ledThree.on();
-
-        // myBoard.repl.inject({
-        //     led3: ledThree
-        // });
-    } else if (command == 'led3-Off') {
-        ledThree.off();
-
-        // myBoard.repl.inject({
-        //     led3: ledThree
-        // });
-    } else if (command == 'util1') {
-        ledTwo.strobe();
-
-        // myBoard.repl.inject({
-        //     led2: ledTwo
-        // });
-    } else if (command == 'util2') {
-        ledTwo.stop();
-
-        // myBoard.repl.inject({
-        //     led2: ledTwo
-        // });
+    function initListeners() {
+        bot.board.on('led1-On', function () {
+            bot.ledOne.on();
+        });
+        bot.board.on('led1-Off', function () {
+            bot.ledOne.off();
+        });
+        bot.board.on('led2-On', function () {
+            bot.ledTwo.on();
+        });
+        bot.board.on('led2-Off', function () {
+            bot.ledTwo.off();
+        });
+        bot.board.on('led3-On', function () {
+            bot.ledThree.on();
+        });
+        bot.board.on('util1', function () {
+            bot.ledTwo.strobe();
+        });
+        bot.board.on('util2', function () {
+            bot.ledTwo.stop();
+        });
     }
-}
+
+    function initComponents() {
+        bot.ledOne = new j5.Led(13);
+        bot.ledTwo = new j5.Led(11);
+        bot.ledThree = new j5.Led(12);
+        bot.ledFour = new j5.Led(10);
+    }
+};

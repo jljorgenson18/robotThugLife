@@ -7,9 +7,16 @@ module.exports = function (grunt) {
             options: {
                 livereload: true,
             },
-            scripts: {
+            uiJS: {
                 files: ['robot-ui/js/**/*.js', 'Gruntfile.js', '!robot-ui/js/all-min.js'],
                 tasks: ['jshint', 'concat', 'uglify'],
+                options: {
+                    spawn: false,
+                },
+            },
+            serverJS: {
+                files: ['robot-server/**/*.js'],
+                tasks: ['jshint'],
                 options: {
                     spawn: false,
                 },
@@ -30,7 +37,7 @@ module.exports = function (grunt) {
                 separator: ';',
             },
             dist: {
-                src: ['robot-ui/js/libraries/jquery-2.1.1.min.js', 'robot-ui/js/socket.js'],
+                src: ['robot-ui/js/libraries/jquery-2.1.1.min.js', 'robot-ui/js/uiSocket.js'],
                 dest: 'robot-ui/js/all-min.js',
             },
         },
@@ -43,9 +50,10 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js'],
+            files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js', 'robot-server/**/*.js'],
             options: {
-                reporter: 'checkstyle'
+                reporter: 'checkstyle',
+                reporterOutput: 'jsHint.xml'
             }
         },
         compass: {
