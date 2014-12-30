@@ -1,7 +1,7 @@
-module.exports.init = function (server, botConstructor, botName) {
+module.exports.init = function(server, botConstructor, botName) {
     var io = require('socket.io').listen(server);
     var connectToJ5 = true;
-    io.sockets.on('connection', function (socket) {
+    io.sockets.on('connection', function(socket) {
         var myBot, uiConfig;
         if (botName !== "none") {
             myBot = botConstructor();
@@ -14,7 +14,7 @@ module.exports.init = function (server, botConstructor, botName) {
             data: 'Connected',
             myBot: uiConfig
         });
-        socket.on('robot command', function (data) {
+        socket.on('robot command', function(data) {
             console.log(data);
             if (connectToJ5) {
                 if (myBot.ready) {
