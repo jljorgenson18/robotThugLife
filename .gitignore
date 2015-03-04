@@ -1,3 +1,35 @@
+# Get rid of sass cache
+.sass-cache/
+
+# Use an install script instead of version control
+node_modules/
+
+# Get rid of dem logs
+npm-debug.log
+
+# Don't want built css or built js
+robot-ui/css/
+all-min.js
+
+# Environment specific configuration
+config.json
+
+# QA Stuff
+jshint.xml
+
+
+# temps
+*.js~
+*.txt~
+*.html~
+*.json~
+*.scss~
+*.md~
+*.sh~
+
+# DEFAULT IGNORES #
+
+
 # Compiled source #
 ###################
 *.com
@@ -34,31 +66,3 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Get rid of sass cache
-.sass-cache/
-
-# Use an install script instead of version control
-node_modules/
-
-# Get rid of dem logs
-npm-debug.log
-
-# Don't want built css or built js
-robot-ui/css/
-all-min.js
-
-# Environment specific configuration
-config.json
-
-# QA Stuff
-jsHint.xml
-
-# temps
-*.js~
-*.txt~
-*.html~ 
-*.json~ 
-*.scss~ 
-*.md~ 
-*.sh~

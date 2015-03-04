@@ -3,35 +3,8 @@ module.exports = function(grunt) {
     // Project configuration. Test
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        watch: {
-            options: {
-                livereload: true,
-            },
-            uiJS: {
-                files: ['robot-ui/js/**/*.js', 'Gruntfile.js', '!robot-ui/js/all-min.js'],
-                tasks: ['jshint', 'concat', 'uglify'],
-                options: {
-                    spawn: false,
-                },
-            },
-            serverJS: {
-                files: ['robot-server/**/*.js'],
-                tasks: ['jshint'],
-                options: {
-                    spawn: false,
-                },
-            },
-            css: {
-                files: ['**/*.scss'],
-                tasks: ['compass'],
-                options: {
-                    spawn: false,
-                }
-            },
-            html: {
-                files: 'robot-ui/index.html',
-            }
-        },
+        jsbeautifier: require('./gruntConfigs/jsBeautConfig.js'),
+        watch: require('./gruntConfigs/watchConfig.js'),
         concat: {
             options: {
                 separator: ';',
@@ -50,18 +23,31 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ['robot-ui/js/*.js', '!robot-ui/js/all-min.js', 'robot-server/**/*.js'],
+            files: ['robot-ui/**/*.js',
+                '!robot-ui/js/all-min.js',
+                '!robot-ui/js/libraries/**/*.js',
+                'robot-server/**/*.js',
+                'Gruntfile.js',
+                'gruntConfigs/*.js'
+            ],
             options: {
                 reporter: 'checkstyle',
-                reporterOutput: 'jsHint.xml'
+                reporterOutput: 'jshint.xml'
             }
         },
         compass: {
             dist: {
                 options: {
-                    config: 'robot-ui/sass/config.rb'
+                    sassDir: 'robot-ui/sass',
+                    cssDir: 'robot-ui/css',
+                    imagesDir: 'robot-ui/images',
+                    fontsDir: 'robot-ui/fonts',
+                    sourcemap: true,
+                    environment: 'development',
+                    outputStyle: 'expanded',
+                    trace: true
                 }
-            }
+            },
         },
 
         autoprefixer: {
@@ -81,6 +67,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jsbeautifier');
 
     //CSS Tasks
     grunt.loadNpmTasks('grunt-contrib-compass');

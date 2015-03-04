@@ -3,7 +3,8 @@ module.exports.init = function(server, botConstructor, botName) {
     var connectToJ5 = true;
     io.sockets.on('connection', function(socket) {
         var myBot, uiConfig;
-        if (botName !== "none") {
+        console.log("Socket.io Connection");
+        if(botName !== "none") {
             myBot = botConstructor();
             uiConfig = require('./' + botName + '/uiConfig.json');
         } else {
@@ -16,8 +17,8 @@ module.exports.init = function(server, botConstructor, botName) {
         });
         socket.on('robot command', function(data) {
             console.log(data);
-            if (connectToJ5) {
-                if (myBot.ready) {
+            if(connectToJ5) {
+                if(myBot.ready) {
                     myBot.board.emit(data.command);
                 } else {
                     console.log("Board not Ready");

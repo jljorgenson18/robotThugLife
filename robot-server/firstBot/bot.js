@@ -13,34 +13,44 @@ module.exports = function () {
     });
     return bot;
 
-    function initListeners() {
-        bot.board.on('led1-On', function () {
-            bot.ledOne.on();
-        });
-        bot.board.on('led1-Off', function () {
-            bot.ledOne.off();
-        });
-        bot.board.on('led2-On', function () {
-            bot.ledTwo.on();
-        });
-        bot.board.on('led2-Off', function () {
-            bot.ledTwo.off();
-        });
-        bot.board.on('led3-On', function () {
-            bot.ledThree.on();
-        });
-        bot.board.on('util1', function () {
-            bot.ledTwo.strobe();
-        });
-        bot.board.on('util2', function () {
-            bot.ledTwo.stop();
-        });
+    function initComponents() {
+      var ledPins = [2,3,4,5,6,7,8,9];
+      bot.leds = [];
+
+      for (var i = 0; i < ledPins.length; i++){
+        var myLed = new j5.Led(ledPins[i]);
+        bot.leds.push(myLed);
+      }
     }
 
-    function initComponents() {
-        bot.ledOne = new j5.Led(13);
-        bot.ledTwo = new j5.Led(11);
-        bot.ledThree = new j5.Led(12);
-        bot.ledFour = new j5.Led(10);
+    function initListeners() {
+        bot.board.on('util1', function () {
+          for (var i = 0; i < bot.leds.length; i++) {
+            bot.leds[i].on();
+          }
+        });
+
+        bot.board.on('util2', function () {
+          for (var i = 0; i < bot.leds.length; i++) {
+            bot.leds[i].off();
+          }
+        });
+        bot.board.on('util3', function () {
+          var delay = 1;
+          bot.board.counter = 0;
+          for (var i = 0; i < bot.leds.length; i++) {
+            var led = bot.leds[i];
+            bot.board.wait(delay,function(){
+                console.log(this.counter + " on");
+                bot.leds[this.counter].on();
+            });
+            bot.board.wait(delay + 200,function(){
+                console.log(this.counter + " off");
+                bot.leds[this.counter].off();
+                this.counter = (this.counter + 1) % bot.leds.length;
+            });
+            delay += 500;
+          }
+        });
     }
 };

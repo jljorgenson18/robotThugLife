@@ -40,6 +40,7 @@ $(document).ready(function () {
         // When the html buttons are clicked...
         $('.util').click(function () {
             var id = $(this).attr('id');
+            console.log(id);
             socket.emit('robot command', {
                 command: id
             });
